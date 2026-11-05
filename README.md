@@ -1,8 +1,8 @@
 # kdeclip
 
-Copy on your phone, paste on your PC. KDE Connect already handles the easy direction; this fixes the one it can't.
+KDE Connect's copy from phone to PC has been broken since Android 10, and it isn't KDE Connect's fault. Android stopped letting background apps read the clipboard, which is the one thing KDE Connect needs to do to send it. This module lifts that restriction for KDE Connect alone, so copied text starts arriving on the PC again.
 
-Android won't let a background app read the clipboard. KDE Connect isn't on screen, isn't your keyboard and isn't a system service, so it gets refused and has nothing to send, and nothing inside KDE Connect changes that. This module hooks the check in the phone's system process and answers yes when the caller is KDE Connect. Every other app still gets the ordinary answer, KDE Connect still does all the syncing, and the module never reads or sends anything by itself.
+The restriction is a check inside the phone's system process. When it sees KDE Connect asking, this module answers yes instead of no. Every other app still gets the ordinary answer, KDE Connect still does all the syncing, and the module never reads or sends anything by itself.
 
 > You need root, through KernelSU or Magisk, plus Vector (what this was tested on) or a recent LSPosed. Without those it does nothing, so there's no point installing it.
 
